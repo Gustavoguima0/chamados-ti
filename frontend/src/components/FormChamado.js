@@ -1,9 +1,10 @@
 import { useState } from 'react';
 
-function FormChamado({ onFechar }) {
+function FormChamado({ onFechar, onSubmit }) {
   const [nome, setNome] = useState('');
   const [setor, setSetor] = useState('');
   const [problema, setProblema] = useState('');
+  const [observacao, setObservacao] = useState('');
 
   return (
     <div className="modal-fundo">
@@ -36,9 +37,21 @@ function FormChamado({ onFechar }) {
           <option value="Sistema lento">Sistema lento</option>
         </select>
 
+        <textarea
+          placeholder="Observação (opcional)"
+          value={observacao}
+          onChange={(e) => setObservacao(e.target.value)}
+          rows={3}
+        />
+
         <div className="modal-botoes">
           <button onClick={onFechar}>Cancelar</button>
-          <button>Abrir Chamado</button>
+          <button onClick={() => {
+            if (!nome || !setor || !problema) return;
+            onSubmit({ nome, setor, problema, observacao });
+          }}>
+            Abrir Chamado
+          </button>
         </div>
       </div>
     </div>
