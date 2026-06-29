@@ -21,3 +21,64 @@ main {
   padding: 24px;
   overflow-y: auto;
 }
+
+.modal-fundo {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-caixa {
+  background-color: #2a2a2a;
+  padding: 32px;
+  border-radius: 12px;
+  width: 420px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.modal-caixa h2 {
+  font-size: 18px;
+}
+
+.modal-caixa input,
+.modal-caixa select {
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #444;
+  background-color: #1e1e1e;
+  color: #f0f0f0;
+  font-size: 14px;
+}
+
+.modal-botoes {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+}
+
+.modal-botoes button {
+  padding: 10px 20px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.modal-botoes button:first-child {
+  background-color: #444;
+  color: #f0f0f0;
+}
+
+.modal-botoes button:last-child {
+  background-color: #2ecc71;
+  color: #1e1e1e;
+  font-weight: bold;
+}
