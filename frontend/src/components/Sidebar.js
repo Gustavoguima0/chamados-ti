@@ -1,7 +1,9 @@
+import './Sidebar.css';
+
 function Sidebar() {
   return (
-    <div>
-      <h2>Menu</h2>
+    <div className="sidebar">
+      <h2>Chamados TI</h2>
       <ul>
         <li>Chamados</li>
         <li>Histórico</li>
