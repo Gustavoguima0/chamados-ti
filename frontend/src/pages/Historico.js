@@ -39,8 +39,11 @@ function Historico({ historico }) {
                         </div>
                         <p className="card-problema">{chamado.problema}</p>
                         <p className="card-nome">Aberto por: {chamado.nome}</p>
-                        {chamado.abertoEm && <p className="card-nome">Aberto em: {chamado.abertoEm}</p>}
-                        <p className="card-nome">Técnico: {chamado.nomeTecnico}</p>
+{chamado.abertoEm && (
+  <p className="card-nome">
+    Aberto em: {new Date(chamado.abertoEm).toLocaleString('pt-BR')}
+  </p>
+)}                        <p className="card-nome">Técnico: {chamado.nomeTecnico}</p>
                         {chamado.justificativa && (
                             <p className="card-obs">Justificativa: {chamado.justificativa}</p>
                         )}

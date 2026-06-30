@@ -8,20 +8,20 @@ function Chamados({ chamados, setChamados, historico, setHistorico }) {
     const [chamadoSelecionado, setChamadoSelecionado] = useState(null);
 
     function adicionarChamado(novoChamado) {
-        const agora = new Date().toLocaleString('pt-BR');
+        const agora = new Date().toISOString();
         setChamados([{ ...novoChamado, abertoEm: agora }, ...chamados]);
         setModalAberto(false);
     }
 
-   function finalizarChamado(chamadoFinalizado) {
-  if (chamadoFinalizado.status !== 'Em análise') {
-    setChamados(chamados.filter(c => 
-      c.abertoEm !== chamadoFinalizado.abertoEm
-    ));
-  }
-  setHistorico([chamadoFinalizado, ...historico]);
-  setChamadoSelecionado(null);
-}
+    function finalizarChamado(chamadoFinalizado) {
+        if (chamadoFinalizado.status !== 'Em análise') {
+            setChamados(chamados.filter(c =>
+                c.abertoEm !== chamadoFinalizado.abertoEm
+            ));
+        }
+        setHistorico([chamadoFinalizado, ...historico]);
+        setChamadoSelecionado(null);
+    }
 
     return (
         <main>
