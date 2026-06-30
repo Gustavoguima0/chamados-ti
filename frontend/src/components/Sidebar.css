@@ -31,3 +31,19 @@
   background-color: #3a3a3a;
   color: #f0f0f0;
 }
+
+.sidebar ul li a {
+  color: #ccc;
+  text-decoration: none;
+}
+
+.sidebar ul li a:hover {
+  color: #f0f0f0;
+}
+.sidebar ul li a {
+  display: block;
+  width: 100%;
+  padding: 10px 12px;
+  color: #ccc;
+  text-decoration: none;
+}
