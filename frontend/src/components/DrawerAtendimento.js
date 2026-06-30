@@ -3,7 +3,6 @@ import { useState } from 'react';
 function DrawerAtendimento({ chamado, onFechar, onFinalizar }) {
   const [nomeTecnico, setNomeTecnico] = useState('');
   const [justificativa, setJustificativa] = useState('');
-  const [status, setStatus] = useState('');
 
   function finalizar(statusEscolhido) {
     if (!nomeTecnico) return alert('Informe o nome do técnico.');
