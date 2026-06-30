@@ -298,3 +298,7 @@ main {
   border-color: #2ecc71;
   font-weight: bold;
 }
+
+.card-em-analise {
+  border-left: 4px solid #e67e22;
+}

@@ -37,7 +37,7 @@ function CardChamado({ chamado, onAtender }) {
     }, []);
 
     return (
-        <div className="card-chamado">
+        <div className={`card-chamado ${chamado.status === 'Em análise' ? 'card-em-analise' : ''}`}>
             <div className="card-header">
                 <span className="card-setor">{chamado.setor}</span>
                 <span className="card-prioridade" style={{ color: prioridade.cor }}>●</span>
