@@ -1,0 +1,98 @@
+.login-fundo {
+  width: 100vw;
+  height: 100vh;
+  background-color: #111;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-caixa {
+  background-color: #1e1e1e;
+  border: 1px solid #2a2a2a;
+  border-radius: 14px;
+  padding: 40px;
+  width: 380px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.login-topo {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.login-topo h1 {
+  font-size: 22px;
+  font-weight: bold;
+  color: #f0f0f0;
+}
+
+.login-topo p {
+  font-size: 13px;
+  color: #555;
+}
+
+.login-campos {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.login-campo {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.login-campo label {
+  font-size: 13px;
+  font-weight: 500;
+  color: #aaa;
+}
+
+.login-campo input {
+  padding: 10px 12px;
+  border-radius: 6px;
+  border: 1px solid #3a3a3a;
+  background-color: #161616;
+  color: #f0f0f0;
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.login-campo input:focus {
+  border-color: #2ecc71;
+}
+
+.login-erro {
+  font-size: 13px;
+  color: #e74c3c;
+  margin-top: -4px;
+}
+
+.btn-login {
+  padding: 12px;
+  border-radius: 6px;
+  border: none;
+  background-color: #2ecc71;
+  color: #111;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  margin-top: 4px;
+}
+
+.btn-login:hover {
+  background-color: #27ae60;
+}
+
+.login-rodape {
+  font-size: 11px;
+  color: #333;
+  text-align: center;
+}

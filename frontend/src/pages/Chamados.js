@@ -26,13 +26,18 @@ function Chamados({ chamados, setChamados, historico, setHistorico }) {
   return (
     <main>
       <div className="page-header">
-        <h2>Chamados Abertos</h2>
-        <button className="btn-novo-chamado" onClick={() => setModalAberto(true)}>
+        <h2>Chamados Abertos {chamados.length > 0 && `(${chamados.length})`}</h2>        <button className="btn-novo-chamado" onClick={() => setModalAberto(true)}>
           + Abrir Chamado
         </button>
       </div>
 
       <div className="lista-chamados">
+        {chamados.length === 0 && (
+          <div className="estado-vazio">
+            <p>Nenhum chamado aberto no momento.</p>
+            <span>Clique em "+ Abrir Chamado" para registrar um novo.</span>
+          </div>
+        )}
         {chamados.map((chamado, index) => (
           <CardChamado
             key={index}

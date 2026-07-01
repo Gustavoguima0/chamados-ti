@@ -7,49 +7,68 @@ function FormChamado({ onFechar, onSubmit }) {
   const [observacao, setObservacao] = useState('');
 
   return (
-    <div className="modal-fundo">
-      <div className="modal-caixa">
-        <h2>Abrir Chamado</h2>
+    <div className="modal-fundo" onClick={onFechar}>
+      <div className="modal-caixa" onClick={(e) => e.stopPropagation()}>
 
-        <input
-          type="text"
-          placeholder="Seu nome"
-          value={nome}
-          onChange={(e) => setNome(e.target.value)}
-        />
+        <div className="modal-header">
+          <h2>Abrir Chamado</h2>
+          <button className="modal-fechar" onClick={onFechar}>✕</button>
+        </div>
 
-        <select value={setor} onChange={(e) => setSetor(e.target.value)}>
-          <option value="">Selecione o setor</option>
-          <option value="UTI">UTI</option>
-          <option value="Recepção">Recepção</option>
-          <option value="Triagem">Triagem</option>
-          <option value="Sala Vermelha">Sala Vermelha</option>
-          <option value="Medicação">Medicação</option>
-          <option value="ADM">ADM</option>
-          <option value="RH">RH</option>
-        </select>
+        <div className="modal-campo">
+          <label>Seu nome</label>
+          <input
+            type="text"
+            placeholder="Ex: Maria da Silva"
+            value={nome}
+            onChange={(e) => setNome(e.target.value)}
+          />
+        </div>
 
-        <select value={problema} onChange={(e) => setProblema(e.target.value)}>
-          <option value="">Selecione o problema</option>
-          <option value="Sem rede">Sem rede</option>
-          <option value="Computador não liga">Computador não liga</option>
-          <option value="Impressora">Impressora</option>
-          <option value="Sistema lento">Sistema lento</option>
-        </select>
+        <div className="modal-campo">
+          <label>Setor</label>
+          <select value={setor} onChange={(e) => setSetor(e.target.value)}>
+            <option value="">Selecione o setor</option>
+            <option value="UTI">UTI</option>
+            <option value="Recepção">Recepção</option>
+            <option value="Triagem">Triagem</option>
+            <option value="Sala Vermelha">Sala Vermelha</option>
+            <option value="Medicação">Medicação</option>
+            <option value="ADM">ADM</option>
+            <option value="RH">RH</option>
+          </select>
+        </div>
 
-        <textarea
-          placeholder="Observação (opcional)"
-          value={observacao}
-          onChange={(e) => setObservacao(e.target.value)}
-          rows={3}
-        />
+        <div className="modal-campo">
+          <label>Problema</label>
+          <select value={problema} onChange={(e) => setProblema(e.target.value)}>
+            <option value="">Selecione o problema</option>
+            <option value="Sem rede">Sem rede</option>
+            <option value="Computador não liga">Computador não liga</option>
+            <option value="Impressora">Impressora</option>
+            <option value="Sistema lento">Sistema lento</option>
+          </select>
+        </div>
+
+        <div className="modal-campo">
+          <label>Observação <span className="label-opcional">(opcional)</span></label>
+          <textarea
+            placeholder="Descreva o problema com mais detalhes..."
+            value={observacao}
+            onChange={(e) => setObservacao(e.target.value)}
+            rows={3}
+          />
+        </div>
 
         <div className="modal-botoes">
-          <button onClick={onFechar}>Cancelar</button>
-          <button onClick={() => {
-            if (!nome || !setor || !problema) return;
-            onSubmit({ nome, setor, problema, observacao });
-          }}>
+          <button className="btn-cancelar" onClick={onFechar}>Cancelar</button>
+          <button
+            className="btn-confirmar"
+            onClick={() => {
+              if (!nome || !setor || !problema) return;
+              onSubmit({ nome, setor, problema, observacao });
+            }}
+          >
             Abrir Chamado
           </button>
         </div>

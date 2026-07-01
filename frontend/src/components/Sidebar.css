@@ -1,49 +1,88 @@
 .sidebar {
-  width: 240px;
+  width: 220px;
   height: 100vh;
-  background-color: #2a2a2a;
-  border-right: 1px solid #3a3a3a;
-  padding: 24px 16px;
+  background-color: #161616;
+  border-right: 1px solid #2a2a2a;
+  padding: 24px 0;
   display: flex;
   flex-direction: column;
+  gap: 32px;
 }
 
-.sidebar h2 {
-  font-size: 18px;
-  margin-bottom: 24px;
+.sidebar-logo {
+  padding: 0 20px;
+}
+
+.sidebar-logo h2 {
+  font-size: 16px;
+  font-weight: bold;
   color: #f0f0f0;
+  letter-spacing: 0.5px;
 }
 
-.sidebar ul {
+nav ul {
   list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
 }
 
-.sidebar ul li {
-  padding: 10px 12px;
-  border-radius: 6px;
-  cursor: pointer;
-  font-size: 14px;
-  color: #ccc;
-  margin-bottom: 4px;
-}
-
-.sidebar ul li:hover {
-  background-color: #3a3a3a;
-  color: #f0f0f0;
-}
-
-.sidebar ul li a {
-  color: #ccc;
-  text-decoration: none;
-}
-
-.sidebar ul li a:hover {
-  color: #f0f0f0;
-}
-.sidebar ul li a {
+nav ul li a {
   display: block;
-  width: 100%;
-  padding: 10px 12px;
-  color: #ccc;
+  padding: 10px 20px;
+  color: #888;
   text-decoration: none;
+  font-size: 14px;
+  transition: all 0.2s;
+}
+
+nav ul li a:hover {
+  color: #f0f0f0;
+  background-color: #2a2a2a;
+}
+
+nav ul li a.active {
+  color: #f0f0f0;
+  background-color: #2a2a2a;
+  border-left: 3px solid #2ecc71;
+  font-weight: bold;
+}
+
+.sidebar-rodape {
+  margin-top: auto;
+  padding: 16px 20px;
+  border-top: 1px solid #2a2a2a;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.rodape-nome {
+  font-size: 12px;
+  color: #666;
+  font-weight: 500;
+}
+
+.rodape-versao {
+  font-size: 11px;
+  color: #444;
+}
+
+.btn-sair {
+  margin-top: 12px;
+  width: 100%;
+  padding: 8px;
+  background: none;
+  border: 1px solid #2a2a2a;
+  border-radius: 6px;
+  color: #555;
+  font-size: 12px;
+  cursor: pointer;
+  text-align: left;
+  transition: all 0.2s;
+}
+
+.btn-sair:hover {
+  border-color: #e74c3c;
+  color: #e74c3c;
 }

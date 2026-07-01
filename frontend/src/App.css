@@ -28,72 +28,128 @@ main {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: rgba(0, 0, 0, 0.75);
   display: flex;
   align-items: center;
   justify-content: center;
+  z-index: 100;
 }
 
 .modal-caixa {
-  background-color: #2a2a2a;
+  background-color: #242424;
   padding: 32px;
   border-radius: 12px;
-  width: 420px;
+  width: 440px;
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 20px;
+  border: 1px solid #3a3a3a;
 }
 
-.modal-caixa h2 {
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #3a3a3a;
+}
+
+.modal-header h2 {
   font-size: 18px;
+  font-weight: 600;
+}
+
+.modal-fechar {
+  background: none;
+  border: none;
+  color: #666;
+  font-size: 16px;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+.modal-fechar:hover {
+  background-color: #3a3a3a;
+  color: #f0f0f0;
+}
+
+.modal-campo {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.modal-campo label {
+  font-size: 13px;
+  font-weight: 500;
+  color: #aaa;
+}
+
+.label-opcional {
+  font-weight: 400;
+  color: #666;
 }
 
 .modal-caixa input,
-.modal-caixa select {
-  padding: 10px;
+.modal-caixa select,
+.modal-caixa textarea {
+  padding: 10px 12px;
   border-radius: 6px;
-  border: 1px solid #444;
-  background-color: #1e1e1e;
+  border: 1px solid #3a3a3a;
+  background-color: #1a1a1a;
   color: #f0f0f0;
   font-size: 14px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.modal-caixa input:focus,
+.modal-caixa select:focus,
+.modal-caixa textarea:focus {
+  border-color: #2ecc71;
+}
+
+.modal-caixa textarea {
+  resize: none;
 }
 
 .modal-botoes {
   display: flex;
   gap: 12px;
   justify-content: flex-end;
+  padding-top: 4px;
 }
 
-.modal-botoes button {
+.btn-cancelar {
   padding: 10px 20px;
   border-radius: 6px;
-  border: none;
+  border: 1px solid #444;
+  background-color: transparent;
+  color: #aaa;
   cursor: pointer;
   font-size: 14px;
 }
 
-.modal-botoes button:first-child {
-  background-color: #444;
+.btn-cancelar:hover {
+  border-color: #666;
   color: #f0f0f0;
 }
 
-.modal-botoes button:last-child {
+.btn-confirmar {
+  padding: 10px 20px;
+  border-radius: 6px;
+  border: none;
   background-color: #2ecc71;
   color: #1e1e1e;
-  font-weight: bold;
-}
-
-
-.modal-caixa textarea {
-  padding: 10px;
-  border-radius: 6px;
-  border: 1px solid #444;
-  background-color: #1e1e1e;
-  color: #f0f0f0;
   font-size: 14px;
-  resize: none;
+  font-weight: bold;
+  cursor: pointer;
 }
 
+.btn-confirmar:hover {
+  background-color: #27ae60;
+}
 
 .lista-chamados {
   display: flex;
@@ -102,12 +158,12 @@ main {
   padding: 24px 0;
 }
 
+
 .card-chamado {
   background-color: #2a2a2a;
   border-radius: 10px;
   padding: 16px;
   width: 280px;
-  min-height: 200px;
   border: 1px solid #3a3a3a;
   display: flex;
   flex-direction: column;
@@ -125,13 +181,21 @@ main {
   font-size: 15px;
 }
 
-.card-prioridade {
-  font-size: 13px;
+.card-badge-prioridade {
+  font-size: 11px;
+  font-weight: 600;
 }
 
 .card-problema {
   font-size: 14px;
-  color: #ccc;
+  color: #ddd;
+}
+
+.card-rodape {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 4px;
 }
 
 .card-nome {
@@ -139,11 +203,38 @@ main {
   color: #888;
 }
 
+.card-tempo {
+  font-size: 11px;
+  color: #555;
+}
+
 .card-obs {
   font-size: 12px;
   color: #aaa;
-  border-top: 1px solid #444;
+  border-top: 1px solid #3a3a3a;
   padding-top: 8px;
+  font-style: italic;
+}
+
+.card-em-analise {
+  border-left: 4px solid #e67e22 !important;
+}
+
+.btn-atender {
+  margin-top: 8px;
+  padding: 8px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: bold;
+  background-color: #3a3a3a;
+  color: #f0f0f0;
+  width: 100%;
+}
+
+.btn-atender:hover {
+  background-color: #444;
 }
 
 .drawer-fundo {
@@ -155,25 +246,51 @@ main {
   background-color: rgba(0, 0, 0, 0.5);
   display: flex;
   justify-content: flex-end;
+  z-index: 100;
 }
 
 .drawer {
-  width: 380px;
+  width: 400px;
   height: 100%;
-  background-color: #2a2a2a;
-  padding: 32px 24px;
+  background-color: #242424;
+  border-left: 1px solid #3a3a3a;
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 0;
   overflow-y: auto;
 }
 
-.drawer h2 {
+.drawer-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px 24px 16px;
+  border-bottom: 1px solid #3a3a3a;
+}
+
+.drawer-header h2 {
   font-size: 18px;
+  font-weight: 600;
+}
+
+.drawer-secao {
+  padding: 20px 24px;
+  border-bottom: 1px solid #3a3a3a;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.drawer-secao-titulo {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #666;
 }
 
 .drawer-info {
-  background-color: #1e1e1e;
+  background-color: #1a1a1a;
   padding: 12px;
   border-radius: 8px;
   display: flex;
@@ -183,21 +300,41 @@ main {
   color: #ccc;
 }
 
+.drawer-campo {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.drawer-campo label {
+  font-size: 13px;
+  font-weight: 500;
+  color: #aaa;
+}
+
 .drawer input,
 .drawer textarea {
-  padding: 10px;
+  padding: 10px 12px;
   border-radius: 6px;
-  border: 1px solid #444;
-  background-color: #1e1e1e;
+  border: 1px solid #3a3a3a;
+  background-color: #1a1a1a;
   color: #f0f0f0;
   font-size: 14px;
+  outline: none;
   resize: none;
+  transition: border-color 0.2s;
+}
+
+.drawer input:focus,
+.drawer textarea:focus {
+  border-color: #2ecc71;
 }
 
 .drawer-botoes {
   display: flex;
   flex-direction: column;
   gap: 10px;
+  padding: 20px 24px 32px;
   margin-top: auto;
 }
 
@@ -318,4 +455,50 @@ main {
 
 main {
   padding: 24px;
+}
+
+.estado-vazio {
+  width: 100%;
+  padding: 60px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  color: #555;
+}
+
+.estado-vazio p {
+  font-size: 16px;
+  color: #666;
+}
+
+.estado-vazio span {
+  font-size: 13px;
+  color: #444;
+}
+
+.card-status {
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.card-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  font-size: 12px;
+  color: #888;
+}
+
+.card-meta strong {
+  color: #bbb;
+}
+
+.card-obs {
+  font-size: 12px;
+  color: #aaa;
+  border-top: 1px solid #3a3a3a;
+  padding-top: 8px;
+  margin-top: 4px;
+  font-style: italic;
 }
