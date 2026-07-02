@@ -48,8 +48,8 @@ function CardChamado({ chamado, onAtender }) {
 
       <div className="card-rodape">
         <span className="card-nome">{chamado.nome}</span>
-        {chamado.abertoEm && (
-          <span className="card-tempo">{calcularTempo(chamado.abertoEm)}</span>
+        {chamado.aberto_em && (
+          <span className="card-tempo">{calcularTempo(chamado.aberto_em)}</span>
         )}
       </div>
 
