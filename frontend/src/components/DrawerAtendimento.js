@@ -9,7 +9,7 @@ function DrawerAtendimento({ chamado, onFechar, onFinalizar }) {
     if (statusEscolhido !== 'Resolvido' && !justificativa) {
       return alert('Informe uma justificativa.');
     }
-    onFinalizar({ ...chamado, status: statusEscolhido, nomeTecnico, justificativa });
+    onFinalizar({ status: statusEscolhido, nomeTecnico, justificativa });
   }
 
   return (

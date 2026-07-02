@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { listarHistorico } from '../api';
 
 const COR_STATUS = {
   'Resolvido': '#2ecc71',
@@ -6,8 +7,18 @@ const COR_STATUS = {
   'Não resolvido': '#e74c3c',
 };
 
-function Historico({ historico }) {
+function Historico() {
+  const [historico, setHistorico] = useState([]);
+  const [carregando, setCarregando] = useState(true);
+  const [erro, setErro] = useState('');
   const [filtroStatus, setFiltroStatus] = useState('Todos');
+
+  useEffect(() => {
+    listarHistorico()
+      .then(setHistorico)
+      .catch((e) => setErro(e.message))
+      .finally(() => setCarregando(false));
+  }, []);
 
   const chamadosFiltrados = historico.filter(chamado => {
     if (filtroStatus === 'Todos') return true;
@@ -32,7 +43,11 @@ function Historico({ historico }) {
         ))}
       </div>
 
-      {chamadosFiltrados.length === 0 ? (
+      {erro && <p className="erro-carregamento">{erro}</p>}
+
+      {carregando ? (
+        <p>Carregando histórico...</p>
+      ) : chamadosFiltrados.length === 0 ? (
         <div className="estado-vazio">
           <p>Nenhum chamado encontrado.</p>
           <span>
@@ -43,9 +58,9 @@ function Historico({ historico }) {
         </div>
       ) : (
         <div className="lista-chamados">
-          {chamadosFiltrados.map((chamado, index) => (
+          {chamadosFiltrados.map((chamado) => (
             <div
-              key={index}
+              key={chamado.id}
               className="card-chamado"
               style={{ borderLeft: `4px solid ${COR_STATUS[chamado.status] || '#555'}` }}
             >
@@ -60,9 +75,9 @@ function Historico({ historico }) {
 
               <div className="card-meta">
                 <p>Aberto por: <strong>{chamado.nome}</strong></p>
-                <p>Técnico: <strong>{chamado.nomeTecnico}</strong></p>
-                {chamado.abertoEm && (
-                  <p>Em: {new Date(chamado.abertoEm).toLocaleString('pt-BR')}</p>
+                <p>Técnico: <strong>{chamado.nome_tecnico}</strong></p>
+                {chamado.aberto_em && (
+                  <p>Em: {new Date(chamado.aberto_em).toLocaleString('pt-BR')}</p>
                 )}
               </div>
 

@@ -502,3 +502,13 @@ main {
   margin-top: 4px;
   font-style: italic;
 }
+
+.erro-carregamento {
+  background-color: rgba(231, 76, 60, 0.15);
+  border: 1px solid #e74c3c;
+  color: #e74c3c;
+  padding: 12px 16px;
+  border-radius: 8px;
+  font-size: 13px;
+  margin-bottom: 16px;
+}

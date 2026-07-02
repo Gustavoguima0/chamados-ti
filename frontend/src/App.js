@@ -8,8 +8,6 @@ import Login from './pages/Login';
 
 function App() {
   const [logado, setLogado] = useState(false);
-  const [chamados, setChamados] = useState([]);
-  const [historico, setHistorico] = useState([]);
 
   if (!logado) {
     return <Login onLogin={() => setLogado(true)} />;
@@ -20,18 +18,8 @@ function App() {
       <div className="layout">
         <Sidebar onSair={() => setLogado(false)} />
         <Routes>
-          <Route
-            path="/"
-            element={
-              <Chamados
-                chamados={chamados}
-                setChamados={setChamados}
-                historico={historico}
-                setHistorico={setHistorico}
-              />
-            }
-          />
-          <Route path="/historico" element={<Historico historico={historico} />} />
+          <Route path="/" element={<Chamados />} />
+          <Route path="/historico" element={<Historico />} />
           <Route path="*" element={<Navigate to="/" />} />
         </Routes>
       </div>
