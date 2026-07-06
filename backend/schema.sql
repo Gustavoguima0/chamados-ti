@@ -13,3 +13,11 @@ CREATE TABLE IF NOT EXISTS chamados (
 );
 
 CREATE INDEX IF NOT EXISTS idx_chamados_status ON chamados (status);
+
+CREATE TABLE IF NOT EXISTS usuarios (
+  id SERIAL PRIMARY KEY,
+  nome_usuario VARCHAR(60) UNIQUE NOT NULL,
+  senha_hash VARCHAR(100) NOT NULL,
+  perfil VARCHAR(20) NOT NULL CHECK (perfil IN ('tecnico', 'usuario')),
+  criado_em TIMESTAMPTZ NOT NULL DEFAULT now()
+);

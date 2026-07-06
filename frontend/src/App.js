@@ -7,8 +7,7 @@ import Historico from './pages/Historico';
 import Login from './pages/Login';
 
 function App() {
-  const [logado, setLogado] = useState(false);
-
+  const [logado, setLogado] = useState(!!localStorage.getItem('token'));
   if (!logado) {
     return <Login onLogin={() => setLogado(true)} />;
   }

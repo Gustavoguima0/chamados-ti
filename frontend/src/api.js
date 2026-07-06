@@ -31,3 +31,11 @@ export function atenderChamado(id, dados) {
     body: JSON.stringify(dados),
   }).then(tratarResposta);
 }
+
+export function login(dados) {
+  return fetch(`${API_URL}/login`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(dados),
+  }).then(tratarResposta);
+}

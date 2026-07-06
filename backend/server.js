@@ -1,6 +1,8 @@
 const express = require('express');
 const cors = require('cors');
 const pool = require('./db');
+const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
 
 const app = express();
 
@@ -91,6 +93,42 @@ app.patch('/chamados/:id/atender', async (req, res) => {
   } catch (erro) {
     console.error(erro);
     res.status(500).json({ erro: 'Não foi possível atualizar o chamado.' });
+  }
+});
+
+app.post('/login', async (req, res) => {
+  const { nome_usuario, senha } = req.body;
+
+  if (!nome_usuario || !senha) {
+    return res.status(400).json({ erro: 'Usuário e senha são obrigatórios.' });
+  }
+
+  try {
+    const { rows } = await pool.query(
+      'SELECT * FROM usuarios WHERE nome_usuario = $1',
+      [nome_usuario]
+    );
+
+    if (rows.length === 0) {
+      return res.status(401).json({ erro: 'Usuário ou senha inválidos.' });
+    }
+
+    const usuario = rows[0];
+
+    const senhaCorreta = await bcrypt.compare(senha, usuario.senha_hash);
+    if (!senhaCorreta) {
+      return res.status(401).json({ erro: 'Usuário ou senha inválidos.' });
+    }
+
+    const token = jwt.sign(
+      { id: usuario.id, nome_usuario: usuario.nome_usuario, perfil: usuario.perfil },
+      process.env.JWT_SECRET,
+      { expiresIn: '8h' }
+    );
+
+    res.json({ token, nome_usuario: usuario.nome_usuario, perfil: usuario.perfil });  } catch (erro) {
+    console.error(erro);
+    res.status(500).json({ erro: 'Erro ao fazer login.' });
   }
 });
 
