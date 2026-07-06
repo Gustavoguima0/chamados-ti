@@ -1,3 +1,7 @@
+🔗 **[Acesse o projeto no ar](https://chamados-ti-teal.vercel.app)**
+
+> ⏱️ O backend roda no plano gratuito do Render e hiberna após inatividade — o primeiro login pode levar até 1 minuto enquanto o servidor acorda.
+
 # Chamados TI
 
 Sistema de abertura e gerenciamento de chamados de TI para ambiente hospitalar.
@@ -31,11 +35,9 @@ Ao longo do desenvolvimento, usei IA como ferramenta de apoio (pair programming)
 - [x] Autenticação real com JWT + hash de senha (bcrypt)
 - [x] Rotas da API protegidas por middleware de autenticação
 - [x] Sessão persistente (o login sobrevive ao recarregamento da página)
+- [x] Deploy (frontend na Vercel, backend no Render, banco no Neon)
 
-**Pendente:**
-- [ ] Permissões diferenciadas por perfil (técnico / usuário comum)
-- [ ] Tela de cadastro de novos usuários
-- [ ] Deploy (frontend e backend)
+
 
 ## Como rodar localmente
 
