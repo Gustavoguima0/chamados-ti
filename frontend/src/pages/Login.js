@@ -1,16 +1,21 @@
 import { useState } from 'react';
 import './Login.css';
+import { login } from '../api';
+
 
 function Login({ onLogin }) {
   const [usuario, setUsuario] = useState('');
   const [senha, setSenha] = useState('');
   const [erro, setErro] = useState('');
 
-  function handleLogin() {
-    if (usuario === 'admin' && senha === '1234') {
+    async function handleLogin() {
+    try {
+      const resposta = await login({ nome_usuario: usuario, senha });
+      localStorage.setItem('token', resposta.token);
+      localStorage.setItem('perfil', resposta.perfil);
       onLogin();
-    } else {
-      setErro('Usuário ou senha incorretos.');
+    } catch (e) {
+      setErro(e.message);
     }
   }
 

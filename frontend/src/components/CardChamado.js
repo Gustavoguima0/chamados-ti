@@ -18,9 +18,15 @@ function calcularPrioridade(setor, problema) {
 function calcularTempo(abertoEm) {
   if (!abertoEm) return null;
   const minutos = Math.floor((new Date() - new Date(abertoEm)) / 60000);
+
   if (minutos < 1) return 'agora';
-  if (minutos === 1) return 'há 1 min';
-  return `há ${minutos} min`;
+  if (minutos < 60) return `há ${minutos} min`;
+
+  const horas = Math.floor(minutos / 60);
+  if (horas < 24) return `há ${horas}h`;
+
+  const dias = Math.floor(horas / 24);
+  return `há ${dias}d`;
 }
 
 function CardChamado({ chamado, onAtender }) {
