@@ -6,8 +6,7 @@
 
 Sistema de abertura e gerenciamento de chamados de TI para ambiente hospitalar.
 
-## Status
-🚧 Em desenvolvimento
+
 
 ## Sobre o projeto
 
